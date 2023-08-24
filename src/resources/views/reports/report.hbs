@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <title>Relatório</title>
+
+  <style>
+    * {
+      font-family: Roboto;
+    }
+
+    .color-red {
+      color: #f00;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <img style="width: 10%; height: 20%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bras%C3%A3o_do_Amap%C3%A1.svg/1200px-Bras%C3%A3o_do_Amap%C3%A1.svg.png" alt="imagem">
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <h1 style="font-size: 12px; font-weight: normal; margin-bottom: 0px;">GOVERNO DO ESTADO DO AMAPÁ</h1>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <h1 style="font-size: 12px; font-weight: normal; margin-bottom: 0px;">SECRETÁRIA DE ESTADO DA SEGURANÇA PÚBLICA</h1>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <h1 style="font-size: 12px; font-weight: normal; margin-bottom: 0px;">INSTITUTO DE IDENTIFICAÇÃO CIVIL E CRIMINAL</h1>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <h1 style="font-size: 28px; font-weight: bold;">PESQUISA DE INDIVÍDUO</h1>
+  </div>
+
+  <h1 style="font-size: 28px; font-weight: bold;">{{ result.nomeRegistroCivil }}</h1>
+
+  <div>
+    <h1 style="font-size: 20px; font-weight: bold;">Dados Civis</h1>
+    <div style="border-top: 1px solid #000; margin-bottom: 10px;"></div>
+
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        {{#ifYes options.cpf}}
+        <h1 style="font-size: 16px; font-weight: normal;"><b>CPF: </b>{{ result.cpf }}</h1>
+        {{/ifYes}}
+
+        {{#ifYes options.rg}}
+        <h1 style="font-size: 16px; font-weight: normal;"><b>RG: </b>{{ result.rg }}</h1>
+        {{/ifYes}}
+        
+        {{#ifYes options.endereco}}
+        <h1 style="font-size: 16px; font-weight: normal;"><b>Endereço: </b>{{ result.endereco }}</h1>
+        {{/ifYes}}
+
+        {{#ifYes options.nome_mae}}
+        <h1 style="font-size: 16px; font-weight: normal;"><b>Nome da mãe: </b>{{ result.nome_mae }}</h1>
+        {{/ifYes}}
+      </div>
+
+      <img style="width: 20%; height: 30%;" src="data:image/png;base64,{{ photo }}" alt="imagem">
+    </div>
+
+    {{!-- <h1 style="font-size: 20px; font-weight: bold;">Dados Criminais</h1>
+    <div style="border-top: 1px solid #000; margin-bottom: 10px;"></div>
+    <h1 style="font-size: 18px; font-weight: bold;">Ocorrências</h1>
+    
+    <ul>
+      <li><h1 style="font-size: 16px; font-weight: normal;">Assalto (xx/xx/xx)</h1></li>
+      <li><h1 style="font-size: 16px; font-weight: normal;">Estelionato (xx/xx/xxxx)</h1></li>
+      <li><h1 style="font-size: 16px; font-weight: normal;">Atentado ao pudor (xx/xx/xxxx)</h1></li>
+    </ul>
+
+    <h1 style="font-size: 18px; font-weight: bold;">Foragido desde</h1> 
+    <h1 style="font-size: 16px; font-weight: normal; color: #f00;">xx/xx/xxxx</h1>  --}}
+
+
+
+
+    <div style="page-break-before: always"></div>
+
+
+
+
+    <div style="margin-bottom: 50px;">
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <img style="width: 10%; height: 20%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bras%C3%A3o_do_Amap%C3%A1.svg/1200px-Bras%C3%A3o_do_Amap%C3%A1.svg.png" alt="imagem">
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <h1 style="font-size: 12px; font-weight: normal; margin-bottom: 0px;">GOVERNO DO ESTADO DO AMAPÁ</h1>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <h1 style="font-size: 12px; font-weight: normal; margin-bottom: 0px;">SECRETÁRIA DE ESTADO DA SEGURANÇA PÚBLICA</h1>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <h1 style="font-size: 12px; font-weight: normal; margin-bottom: 0px;">INSTITUTO DE IDENTIFICAÇÃO CIVIL E CRIMINAL</h1>
+      </div>
+    </div>
+
+    <h1 style="font-size: 20px; font-weight: bold;">Dados complementares (Dados do INRC)</h1>
+    <div style="border-top: 1px solid #000; margin-bottom: 10px;"></div>
+
+    {{#ifYes options.idUF}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>ID UF: </b>{{ result.idUF }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.rgUF}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>RG UF: </b>{{ result.rgUF }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.nomeSocial}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>NOME SOCIAL: </b>{{ result.nomeSocial }}</h1>
+    {{/ifYes}}
+
+    {{#ifYes options.sexo}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>SEXO: </b>{{ result.sexo }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.pais}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>PAÍS: </b>{{ result.pais }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.dadosCertidao}}
+    <h1 style="font-size: 16px; font-weight: normal; text-align: justify;"><b>DADOS CERTIDÃO: </b>{{ result.dadosCertidao }}</h1>
+    {{/ifYes}}  
+    
+    {{#ifYes options.tipoCertidao}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>TIPO CERTIDÃO: </b>{{ result.tipoCertidao }}</h1>
+    {{/ifYes}}
+
+    {{#ifYes options.cnh}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>CNH: </b>{{ result.cnh }}</h1>
+    {{/ifYes}}
+
+    {{#ifYes options.cns}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>CNS: </b>{{ result.cns }}</h1>
+    {{/ifYes}}
+
+    {{#ifYes options.TituloEleitor}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>TÍTULO DE ELEITOR: </b>{{ result.TituloEleitor }}</h1>
+    {{/ifYes}}
+
+    {{#ifYes options.pispasep}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>PIS/PASEP: </b>{{ result.pispasep }}</h1>
+    {{/ifYes}}
+
+    {{#ifYes options.certidaoMilitar}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>CERTIDÃO MILITAR: </b>{{ result.certidaoMilitar }}</h1>
+    {{/ifYes}}
+
+    {{#ifYes options.ctps}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>CTPS: </b>{{ result.ctps }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.cip}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>CIP: </b>{{ result.cip }}</h1>
+    {{/ifYes}}
+
+    {{#ifYes options.indSaudeFisica}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>INDICADOR SAÚDE FÍSICA: </b>{{ result.indSaudeFisica }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.indSaudeIntelectual}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>INDICADOR SAÚDE INTELECTUAL: </b>{{ result.indSaudeIntelectual }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.indSaudeVisual}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>INDICADOR SAÚDE VISUAL: </b>{{ result.indSaudeVisual }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.indSaudeAuditiva}} 
+    <h1 style="font-size: 16px; font-weight: normal;"><b>INDICADOR SAÚDE AUDITIVA: </b>{{ result.indSaudeAuditiva }}</h1>
+    {{/ifYes}}
+
+    {{#ifYes options.indSaudeAutismo}} 
+    <h1 style="font-size: 16px; font-weight: normal;"><b>INDICADOR SAÚDE AUTISMO: </b>{{ result.indSaudeAutismo }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.indTipoSanguineo}} 
+    <h1 style="font-size: 16px; font-weight: normal;"><b>INDICADOR TIPO SANGUÍNEO: </b>{{ result.indTipoSanguineo }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.indSaudeObservacao}} 
+    <h1 style="font-size: 16px; font-weight: normal;"><b>INDICADOR SAÚDE OBSERVAÇÃO: </b>{{ result.indSaudeObservacao }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.dataEmissao}} 
+    <h1 style="font-size: 16px; font-weight: normal;"><b>DATA DE EMISSÃO: </b>{{ result.dataEmissao }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.cedulaEmissao}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>CÉDULA DE EMISSÃO: </b>{{ result.cedulaEmissao }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.viaEmissao}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>VIA DE EMISSÃO: </b>{{ result.viaEmissao }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.nome_mae}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>NOME DA MÃE: </b>{{ result.nome_mae }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.nome_pai}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>NOME DO PAI: </b>{{ result.nome_pai }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.data_nascimento}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>DATA DE NASCIMENTO: </b>{{ result.data_nascimento }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.uf_naturalidade}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>UF NATURALIDADE: </b>{{ result.uf_naturalidade }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.descr_naturalidade}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>DESCRIÇÃO NATURALIDADE: </b>{{ result.descr_naturalidade }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.cod_nacionalidade}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>CÓDIGO NACIONALIDADE: </b>{{ result.cod_nacionalidade }}</h1>
+    {{/ifYes}}
+    
+    {{#ifYes options.cod_naturalidade_ibge}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>CÓDIGO NATURALIDADE (IBGE): </b>{{ result.cod_naturalidade_ibge }}</h1>
+    {{/ifYes}}
+
+    {{#ifYes options.cadastro_biometrico}}
+    <h1 style="font-size: 16px; font-weight: normal;"><b>CADASTRO BIOMÉTRICO: </b>{{ result.cadastro_biometrico }}</h1>
+    {{/ifYes}}
+
+    {{!-- <div style="background-color: #f00; padding: 5px;">
+      <h1 style="font-size: 16px; font-weight: normal; color: #fff"><b>RG ADICIONAL: </b>3546345</h1>
+    </div>
+    <h1 style="font-size: 16px; font-weight: normal;"><b>CÓD. NATURALIDADE (IBGE): </b>xxxxx</h1>
+    <h1 style="font-size: 16px; font-weight: normal;"><b>CÓD. NACIONALIDADE: </b>xxxxxx</h1>
+    <h1 style="font-size: 16px; font-weight: normal;"><b>UF DO RG: </b>Estado 2</h1>
+    <h1 style="font-size: 16px; font-weight: normal;"><b>BIOMETRIA: </b>Sim</h1> --}}
+  </div>
+</body>
+
+</html>
